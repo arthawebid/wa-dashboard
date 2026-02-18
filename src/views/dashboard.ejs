@@ -1,34 +1,38 @@
-<h3>Dashboard</h3>
+<section class="content">
 
-<div class="row">
-  <div class="col-md-4">
-    <div class="card bg-info">
-      <div class="card-body">
-        <h5>Total Devices</h5>
-        <h2><%= totalDevices %></h2>
+  <div class="row">
+
+    <div class="col-lg-6">
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3><%= totalDevices %></h3>
+          <p>Total Devices</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-mobile"></i>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-4">
-    <div class="card bg-success">
-      <div class="card-body">
-        <h5>Total Messages</h5>
-        <h2><%= totalMessages %></h2>
+    <div class="col-lg-6">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3><%= totalMessages %></h3>
+          <p>Total Messages</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-comments"></i>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
 
-<h5 class="mt-4">Realtime Messages</h5>
-<div id="realtimeMessages"></div>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Realtime Messages</h3>
+    </div>
+    <div class="card-body" id="realtimeMessages"></div>
+  </div>
 
-<script>
-const socket = io();
-socket.on("new_message", (data) => {
-  const container = document.getElementById("realtimeMessages");
-  const item = document.createElement("div");
-  item.innerHTML = `<b>${data.session}</b>: ${data.message}`;
-  container.prepend(item);
-});
-</script>
+</section>
