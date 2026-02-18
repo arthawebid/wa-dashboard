@@ -1,0 +1,34 @@
+<h3>Dashboard</h3>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card bg-info">
+      <div class="card-body">
+        <h5>Total Devices</h5>
+        <h2><%= totalDevices %></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-success">
+      <div class="card-body">
+        <h5>Total Messages</h5>
+        <h2><%= totalMessages %></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-4">Realtime Messages</h5>
+<div id="realtimeMessages"></div>
+
+<script>
+const socket = io();
+socket.on("new_message", (data) => {
+  const container = document.getElementById("realtimeMessages");
+  const item = document.createElement("div");
+  item.innerHTML = `<b>${data.session}</b>: ${data.message}`;
+  container.prepend(item);
+});
+</script>
